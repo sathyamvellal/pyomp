@@ -15,12 +15,12 @@ def multiply(A, B, C):
             for k in range(size):
                 C[i][k] += A[i][k] * B[k][j]
 
-t1 = time.time()
+time1 = time.time()
 multiply(A, B, C)
-t2 = time.time()
-print (t2 - t1)
+time2 = time.time()
+print (time2 - time1)
 
-t3 = time.time()
+time3 = time.time()
 @Omp.Parallel({"noThreads":4})
 def foo():
     @Omp.For(range(size))
@@ -30,5 +30,5 @@ def foo():
                 C[i][j] = 0
                 for k in range(size):
                     C[i][j] += A[i][k] * B[k][j]
-t4 = time.time()
-print (t4 - t3)
+time4 = time.time()
+print (time4 - time3)
